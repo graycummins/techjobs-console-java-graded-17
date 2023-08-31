@@ -92,7 +92,8 @@ public class JobData {
         loadData();
 
         // TODO - implement this method
-        for (HashMap<String, String> hash : someJobs) {
+        //using same template from TechJobs print all
+        for (HashMap<String, String> hash : allJobs) {
             System.out.println("*****");
             for (Map.Entry<String, String> jobs : hash.entrySet()) {
                 System.out.println(jobs.getKey() + ": " + jobs.getValue());
