@@ -90,7 +90,7 @@ public class JobData {
 
         // load data, if not already loaded
         loadData();
-        System.out.println("In findbyvalue");
+        //System.out.println("In findbyvalue");
         // TODO - implement this method
 
         //creating a new ArrayList<HashMap<String, String>> to hold the jobs found by the search value
@@ -100,7 +100,7 @@ public class JobData {
         for (HashMap<String, String> hash : allJobs) {
             for (Map.Entry<String, String> jobs : hash.entrySet()) {
 
-                if(jobs.getValue().toUpperCase().contains(value)) {
+                if(jobs.getValue().toLowerCase().contains(value)) {
                     jobsByValue.add(hash);
                     System.out.println(jobs);
                 }
