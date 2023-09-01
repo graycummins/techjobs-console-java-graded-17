@@ -72,7 +72,7 @@ public class JobData {
 
             String aValue = row.get(column);
 
-            if (aValue.contains(value)) {
+            if (aValue.toLowerCase().contains(value)) {
                 jobs.add(row);
             }
         }
@@ -90,18 +90,24 @@ public class JobData {
 
         // load data, if not already loaded
         loadData();
-
+        System.out.println("In findbyvalue");
         // TODO - implement this method
-        //using same template from TechJobs print all
+
+        //creating a new ArrayList<HashMap<String, String>> to hold the jobs found by the search value
+        ArrayList<HashMap<String, String>> jobsByValue = new ArrayList<>();
+
+        //loop through the hash map to find the job value entered
         for (HashMap<String, String> hash : allJobs) {
-            System.out.println("*****");
             for (Map.Entry<String, String> jobs : hash.entrySet()) {
-                System.out.println(jobs.getKey() + ": " + jobs.getValue());
+
+                if(jobs.getValue().toUpperCase().contains(value)) {
+                    jobsByValue.add(hash);
+                    System.out.println(jobs);
+                }
             }
-            String newLine = System.getProperty("line.separator");
-            System.out.println("*****" + newLine);
+
         }
-        return null;
+        return jobsByValue;
     }
 
     /**

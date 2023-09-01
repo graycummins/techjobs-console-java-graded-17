@@ -1,3 +1,5 @@
+import org.w3c.dom.ls.LSOutput;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -61,10 +63,12 @@ public class TechJobs {
                 System.out.println("\nSearch term:");
                 String searchTerm = in.nextLine();
 
+                String newSearchTerm = searchTerm.toLowerCase();
+
                 if (searchField.equals("all")) {
-                    printJobs(JobData.findByValue(searchTerm));
+                    printJobs(JobData.findByValue(newSearchTerm));
                 } else {
-                    printJobs(JobData.findByColumnAndValue(searchField, searchTerm));
+                    printJobs(JobData.findByColumnAndValue(searchField, newSearchTerm));
                 }
             }
         }
@@ -119,14 +123,18 @@ public class TechJobs {
 
     // Print a list of jobs
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
+        if (someJobs.isEmpty()){
+            System.out.println("No Results");
+        }
+        else {
+            for (HashMap<String, String> hash : someJobs) {
+                System.out.println("*****");
+                for (Map.Entry<String, String> jobs : hash.entrySet()) {
+                    System.out.println(jobs.getKey() + ": " + jobs.getValue());
+                }
 
-        for (HashMap<String, String> hash : someJobs) {
-            System.out.println("*****");
-            for (Map.Entry<String, String> jobs : hash.entrySet()) {
-                System.out.println(jobs.getKey() + ": " + jobs.getValue());
+                System.out.println("*****" +System.lineSeparator());
             }
-            String newLine = System.getProperty("line.separator");
-            System.out.println("*****" + newLine);
         }
     }
 }
