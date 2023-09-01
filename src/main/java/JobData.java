@@ -98,11 +98,11 @@ public class JobData {
 
         //loop through the hash map to find the job value entered
         for (HashMap<String, String> hash : allJobs) {
-            for (Map.Entry<String, String> jobs : hash.entrySet()) {
+            for (String job : hash.keySet()) {
+                String valueStr = hash.get(job);
 
-                if(jobs.getValue().toLowerCase().contains(value)) {
+                if(valueStr.toLowerCase().contains(value.toLowerCase())) {
                     jobsByValue.add(hash);
-                    System.out.println(jobs);
                 }
             }
 
