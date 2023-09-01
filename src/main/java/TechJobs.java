@@ -131,12 +131,12 @@ public class TechJobs {
             for (HashMap<String, String> hash : someJobs) {
 
                 String newLine = "\n*****\n";
-                System.out.println("*****");
+                System.out.println("\n*****");
                 for (Map.Entry<String, String> jobs : hash.entrySet()) {
                     System.out.println(jobs.getKey() + ": " + jobs.getValue());
                 }
 
-                System.out.println("*****\n");
+                System.out.println("*****");
             }
 
     }
